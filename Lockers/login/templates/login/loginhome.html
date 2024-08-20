@@ -1,0 +1,59 @@
+<!-- templates/account/login.html -->
+{% extends 'layout.html' %}
+{% load django_bootstrap5 %}
+
+{% block title%}홈 화면{% endblock title%}
+{% block contents %}
+{% if errorMessage != None %}
+    <span class="text-danger">{{errorMessage}}</span>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <style>
+        
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* 버튼들을 세로로 정렬 */
+            align-items: center;    /* 가운데 정렬 */
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: column; /* 버튼 그룹을 세로로 정렬 */
+            align-items: center;
+        }
+        .btn-group a {
+            display: block;
+            margin-bottom: 15px; /* 각 버튼 간의 간격을 설정 */
+            width: 200px; /* 버튼 너비 설정 */
+            text-align: center;
+        }
+        h1 {
+        margin-bottom: 20px;
+        position: relative;
+        font-size: 30pt;
+        top: -90px; /* 이 값을 조정하여 LOCKERs의 위치를 올리세요 */
+        color: blue;
+        }
+    </style>
+    
+    <div class="background-image"></div>
+    <div class="content">
+        <h1>LOCKERs</h1>
+        <div class="btn-group">
+            <a href="{% url 'login:detail' %}" class="btn btn-primary">회원정보조회</a>
+            <a href="#" class="btn btn-primary">Locker예약</a>
+            <a href="#" class="btn btn-primary">Locker조회</a>
+            <a href="#" class="btn btn-primary">택배예약</a>
+            <a href="#" class="btn btn-primary">택배조회</a>
+        </div>
+    </div>
+    
+    
+    
+</form> 
+{% endblock contents%}
